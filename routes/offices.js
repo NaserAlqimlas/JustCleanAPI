@@ -9,7 +9,7 @@ const Op = Sequelize.Op;
 router.get("/get", (req, res) =>
   Offices.findAll()
     .then((offices) => {
-      res.sendStatus(200).json(offices);
+      res.status(200).json(offices);
     })
     .catch((err) => res.status(404).json({ error: err }))
 );
@@ -22,7 +22,7 @@ router.post("/create", (req, res) => {
     name,
     tower_id,
   })
-    .then((office) => res.sendStatus(200))
+    .then((office) => res.status(200))
     .catch((err) => res.status(500).json({ error: err }));
 });
 
@@ -31,7 +31,7 @@ router.delete("/delete", (req, res) => {
 
   Tower.findAll({ where: { id: { targetId } } })
     .destroy()
-    .then((office) => res.sendStatus(200))
+    .then((office) => res.status(200))
     .catch((err) => res.status(404).json({ error: err }));
 });
 

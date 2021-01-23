@@ -1,6 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const path = require("path");
 
 // Database
 const db = require("./config/database");
@@ -12,8 +10,7 @@ db.authenticate()
 
 const app = express();
 
-// Body Parser
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 
 // Tower routes
 app.use("/towers", require("./routes/towers"));

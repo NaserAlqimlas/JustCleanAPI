@@ -7,12 +7,15 @@ const Tower = db.define(
     name: { type: Sequelize.STRING },
     location: { type: Sequelize.STRING },
     numberOfFloors: { type: Sequelize.SMALLINT },
-    numberOfOffices: { type: Sequelize.INTEGER },
     rating: {
       type: (Sequelize.DataTypes.DECIMAL.types.postgres = ["numeric"]),
     },
-    longitude: { type: Sequelize.DataTypes.GEOMETRY("POINT") },
-    latitude: { type: Sequelize.DataTypes.GEOMETRY("POINT") },
+    longitude: {
+      type: (Sequelize.DataTypes.DECIMAL.types.postgres = ["numeric"]),
+    },
+    latitude: {
+      type: (Sequelize.DataTypes.DECIMAL.types.postgres = ["numeric"]),
+    },
   },
   {
     timestamps: false,
