@@ -1,0 +1,30 @@
+{
+  "name": "justcleanapi",
+  "version": "1.0.0",
+  "description": "curd API for towers",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NaserAlqimlas/JustCleanAPI.git"
+  },
+  "author": "Naser Alqimlas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NaserAlqimlas/JustCleanAPI/issues"
+  },
+  "homepage": "https://github.com/NaserAlqimlas/JustCleanAPI#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
