@@ -15,10 +15,9 @@ const app = express();
 // Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => res.send("INDEX"));
-
 // Tower routes
 app.use("/towers", require("./routes/towers"));
+app.use("/offices", require("./routes/offices"));
 
 const PORT = process.env.PORT || 5000;
 

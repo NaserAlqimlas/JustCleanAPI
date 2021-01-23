@@ -6,14 +6,26 @@ const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
 // get towers list
-router.get("/", (req, res) =>
-  Tower.findAll()
-    .then((towers) => {
-      console.log(towers);
-      res.sendStatus(200);
+router.get("/get", (req, res) => {
+  if (req.query.order) {
+    // order by whatever is passed in the body field 'order' -- used for sorting
+    Tower.findAll({
+      limit: req.query.limit,
+      offset: req.query.offset,
+      order: [req.query.order],
     })
-    .catch((err) => console.log("Error: ", err))
-);
+      .then((towers) => {
+        res.sendStatus(200).json(towers);
+      })
+      .catch((err) => res.status(404).json({ error: err }));
+  } else {
+    Tower.findAll({ limit: req.query.limit, offset: req.query.offset })
+      .then((towers) => {
+        res.sendStatus(200).json(towers);
+      })
+      .catch((err) => res.status(404).json({ error: err }));
+  }
+});
 
 // Create a new tower entry
 router.post("/create", (req, res) => {
@@ -37,16 +49,16 @@ router.post("/create", (req, res) => {
     longitude,
   })
     .then((tower) => res.sendStatus(200))
-    .catch((err) => console.log("Error: ", err));
+    .catch((err) => res.status(500).json({ error: err }));
 });
 
 router.delete("/delete", (req, res) => {
-  const targetId = req.body.id;
+  const targetId = req.query.id;
 
   Tower.findAll({ where: { id: { targetId } } })
     .destroy()
     .then((tower) => res.sendStatus(200))
-    .catch((err) => console.log("Error: ", err));
+    .catch((err) => res.status(404).json({ error: err }));
 });
 
 module.exports = router;
