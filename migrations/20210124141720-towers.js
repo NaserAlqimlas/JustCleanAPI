@@ -12,20 +12,20 @@ module.exports = {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
+        autoIncrement: true
       },
       name: { type: Sequelize.DataTypes.STRING, allowNull: false },
       location: { type: Sequelize.DataTypes.STRING, allowNull: false },
       numberOfFloors: { type: Sequelize.DataTypes.SMALLINT, allowNull: false },
       rating: {
-        type: (Sequelize.DataTypes.DECIMAL.types.postgres = ["numeric"]),
+        type: (Sequelize.DataTypes.DECIMAL.types.postgres = ["numeric"])
       },
       longitude: {
-        type: (Sequelize.DataTypes.DECIMAL.types.postgres = ["numeric"]),
+        type: (Sequelize.DataTypes.DECIMAL.types.postgres = ["numeric"])
       },
       latitude: {
-        type: (Sequelize.DataTypes.DECIMAL.types.postgres = ["numeric"]),
-      },
+        type: (Sequelize.DataTypes.DECIMAL.types.postgres = ["numeric"])
+      }
     });
   },
 
@@ -36,5 +36,5 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-  },
+  }
 };

@@ -1,4 +1,5 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
 
 // Database
 const db = require("./config/database");
@@ -15,6 +16,7 @@ app.use(express.json());
 // Tower routes
 app.use("/towers", require("./routes/towers"));
 app.use("/offices", require("./routes/offices"));
+app.use("/auth", require("./routes/auth"));
 
 const PORT = process.env.PORT || 5000;
 

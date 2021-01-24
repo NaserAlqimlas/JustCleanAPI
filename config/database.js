@@ -7,6 +7,6 @@ module.exports = new Sequelize("towers", "postgres", "rootpass", {
     max: 5,
     min: 0,
     acquire: 30000,
-    idel: 10000,
-  },
+    idel: 10000
+  }
 });

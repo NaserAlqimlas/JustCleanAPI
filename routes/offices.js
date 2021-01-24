@@ -20,7 +20,7 @@ router.post("/create", (req, res) => {
 
   Office.create({
     name,
-    tower_id,
+    tower_id
   })
     .then((office) => res.status(200))
     .catch((err) => res.status(500).json({ error: err }));

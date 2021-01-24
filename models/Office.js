@@ -5,10 +5,10 @@ const Office = db.define(
   "tower",
   {
     tower_id: { type: Sequelize.INTEGER },
-    name: { type: Sequelize.STRING },
+    name: { type: Sequelize.STRING }
   },
   {
-    timestamps: false,
+    timestamps: false
   }
 );
 

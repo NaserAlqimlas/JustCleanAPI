@@ -12,10 +12,10 @@ module.exports = {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
+        autoIncrement: true
       },
       tower_id: { type: Sequelize.INTEGER },
-      name: { type: Sequelize.STRING },
+      name: { type: Sequelize.STRING }
     });
   },
 
@@ -26,5 +26,5 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-  },
+  }
 };

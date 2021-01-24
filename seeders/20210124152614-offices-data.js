@@ -14,28 +14,28 @@ module.exports = {
     return queryInterface.bulkInsert("offices", [
       {
         tower_id: 1,
-        name: "JustClean",
+        name: "JustClean"
       },
       {
         tower_id: 2,
-        name: "Boubyan Bank",
+        name: "Boubyan Bank"
       },
       {
         tower_id: 1,
-        name: "Famous Office #1",
+        name: "Famous Office #1"
       },
       {
         tower_id: 1,
-        name: "Famous Office #2",
+        name: "Famous Office #2"
       },
       {
         tower_id: 1,
-        name: "Famous Office #3",
+        name: "Famous Office #3"
       },
       {
         tower_id: 1,
-        name: "Famous Office #4",
-      },
+        name: "Famous Office #4"
+      }
     ]);
   },
 
@@ -46,5 +46,5 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-  },
+  }
 };

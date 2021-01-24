@@ -18,7 +18,7 @@ module.exports = {
         numberOfFloors: 60,
         rating: 4.5,
         longitude: 29.3791,
-        latitude: 47.9933,
+        latitude: 47.9933
       },
       {
         name: "Burj Mubarak",
@@ -26,7 +26,7 @@ module.exports = {
         numberOfFloors: 18,
         rating: 1.5,
         longitude: 29.3793,
-        latitude: 47.9935,
+        latitude: 47.9935
       },
       {
         name: "Nasers Favorite Tower",
@@ -34,7 +34,7 @@ module.exports = {
         numberOfFloors: 2000,
         rating: 5,
         longitude: 29.3792,
-        latitude: 47.9934,
+        latitude: 47.9934
       },
       {
         name: "Everyones least favorite tower",
@@ -42,8 +42,8 @@ module.exports = {
         numberOfFloors: 2,
         rating: 0,
         longitude: 29.379,
-        latitude: 47.9932,
-      },
+        latitude: 47.9932
+      }
     ]);
   },
 
@@ -54,5 +54,5 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-  },
+  }
 };
