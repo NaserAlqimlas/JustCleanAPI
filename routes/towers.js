@@ -54,6 +54,16 @@ router.get("/get", (req, res) => {
         res.status(200).json(towers);
       })
       .catch((err) => res.status(404).json({ error: err }));
+  } else if (req.query.filters) {
+    Tower.findAll({
+      limit: req.query.limit,
+      offset: req.query.offset,
+      attributes: req.query.filters
+    })
+      .then((towers) => {
+        res.status(200).json(towers);
+      })
+      .catch((err) => res.status(404).json({ error: err }));
   } else {
     Tower.findAll({ limit: req.query.limit, offset: req.query.offset })
       .then((towers) => {
