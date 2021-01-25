@@ -10,6 +10,16 @@ db.authenticate()
   .catch((err) => console.log("Error: ", err));
 
 const app = express();
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
+
+app.get("/", (req, res) => {
+  res.send("<h1>Hello world</h1>");
+});
+
+io.on("connect", (socket) => {
+  console.log("a user connected");
+});
 
 app.use(express.json());
 
@@ -20,4 +30,4 @@ app.use("/auth", require("./routes/auth"));
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`Server started on port ${PORT}`));
+http.listen(PORT, console.log(`Server started on port ${PORT}`));

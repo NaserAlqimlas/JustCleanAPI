@@ -13,3 +13,8 @@ Afterwards:
 ## Running the API
 
 To run the api simply run `npm run dev` which will boot up the API. Navigate to localhost:5000/ to test.
+
+to generate the jwt web token, run the `auth/login` API and copy and paste the web token into the headers of the Create, Update and Delete requests under Authorization such that it looks like this
+`Bearer <jwt-auth-token>`
+
+## Notes and issues

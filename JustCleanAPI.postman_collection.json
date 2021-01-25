@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "de8c0c96-1bf1-45af-8c41-0fe2ba317825",
+		"name": "JustCleanAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all towers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"nsq2169@gmail.com\",\n\t\"password\": \"yes\",\n\t\"fullName\": \"naser istesting\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/towers/get?show-with-offices=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"towers",
+						"get"
+					],
+					"query": [
+						{
+							"key": "show-with-offices",
+							"value": "true"
+						}
+					]
+				},
+				"description": "* change query params to: `order=ASC&col=name` to sort by name ascending\n\n* change query to `filterquery` and `filtercol` for filtering\n\n* add `limit` and `offset` to queries for pagination\n\n* also works if you remove all queries\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "create a tower",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBqdXN0Y2xlYW4uY29tIn0sImlhdCI6MTYxMTUwNTgzM30.sNBK9f_KtIMeRxMeZ7dk0FK-BlyL6t-SY9zV3FyWTms",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test create \",\n    \"location\": \"kaifan\",\n    \"numberOfFloors\": 6,\n    \"rating\": 5,\n    \"longitude\": 27.1235,\n    \"latitude\": 23.12567\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/towers/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"towers",
+						"create"
+					]
+				},
+				"description": "only include the key/values that you need to change."
+			},
+			"response": []
+		},
+		{
+			"name": "delete a tower",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBqdXN0Y2xlYW4uY29tIn0sImlhdCI6MTYxMTUwNTgzM30.sNBK9f_KtIMeRxMeZ7dk0FK-BlyL6t-SY9zV3FyWTms",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/towers/delete?id=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"towers",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				},
+				"description": "pass id of tower you want to delete in the query"
+			},
+			"response": []
+		},
+		{
+			"name": "login -- create jwt auth token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"login"
+					]
+				},
+				"description": "creates a jwt auth token\n\nmake sure to add Authorization header with value `Bearer <jwt-auth-token>` in create, update, and delete APIs. "
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/towers/update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBqdXN0Y2xlYW4uY29tIn0sImlhdCI6MTYxMTUwNTgzM30.sNBK9f_KtIMeRxMeZ7dk0FK-BlyL6t-SY9zV3FyWTms",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 6,\n    \"name\": \"reqbody\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/towers/update",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"towers",
+						"update"
+					]
+				},
+				"description": "update a tower"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
