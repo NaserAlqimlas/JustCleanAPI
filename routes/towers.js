@@ -5,10 +5,10 @@ const db = require("../config/database");
 const Tower = require("../models/Tower");
 const Office = require("../models/Office");
 const Sequelize = require("sequelize");
-const { JsonWebTokenError } = require("jsonwebtoken");
 const Op = Sequelize.Op;
 
-// verify token for create, update, delete.
+// verify token -- for create, update, delete.
+// need this for JWT Authentication.
 const verifyToken = (req, res, next) => {
   // Get auth token
   const bearerHeader = req.headers["authorization"];
@@ -40,25 +40,31 @@ router.get("/get", (req, res) => {
       .catch((err) => res.status(404).json({ error: err }));
   } else if (req.query["show-with-offices"]) {
     // return towers that have offices
-    console.log("mah");
     Tower.findAll({
       limit: req.query.limit,
       offset: req.query.offset,
-      include: [
-        {
-          model: Office
-        }
-      ]
+      include: {
+        model: Office,
+        required: true
+      }
     })
       .then((towers) => {
         res.status(200).json(towers);
       })
       .catch((err) => res.status(404).json({ error: err }));
-  } else if (req.query.filters) {
+  } else if (req.query.filterquery && req.query.filtercol) {
+    // filter/search by passing what to search by (col) and the search query
+    const filterquery = req.query.filterquery;
+    const filtercol = req.query.filtercol;
+
     Tower.findAll({
       limit: req.query.limit,
       offset: req.query.offset,
-      attributes: req.query.filters
+      where: {
+        [filtercol]: {
+          [Op.iLike]: "%" + filterquery + "%"
+        }
+      }
     })
       .then((towers) => {
         res.status(200).json(towers);
@@ -72,47 +78,6 @@ router.get("/get", (req, res) => {
       .catch((err) => res.status(404).json({ error: err }));
   }
 });
-
-// router.get("/search", (req, res) => {
-//   let {
-//     name,
-//     location,
-//     numberOfFloors,
-//     rating,
-//     longitude,
-//     latitude,
-//   } = req.body;
-
-//   // handling null values, temporary workaround
-//   // TODO: find a better way to handle this
-//   numberOfFloors == null ? (numberOfFloors = -1) : numberOfFloors;
-//   rating == null ? (rating = -1) : rating;
-//   longitude == null ? (longitude = 181) : longitude;
-//   latitude == null ? (latitude = 91) : latitude;
-
-//   Tower.findAll({
-//     limit: req.query.limit,
-//     offset: req.query.offset,
-//     where: {
-//       name: {
-//         [Op.like]: "%" + name + "%",
-//       },
-//       location: {
-//         [Op.like]: "%" + location + "%",
-//       },
-//       numberOfFloors: numberOfFloors,
-//       rating: {
-//         [Op.like]: rating,
-//       },
-//       longitude: longitude,
-//       latitude: latitude,
-//     },
-//   })
-//     .then((towers) => {
-//       res.status(200).json(towers);
-//     })
-//     .catch((err) => res.status(404).json({ error: err }));
-// });
 
 // Create a new tower entry
 router.post("/create", verifyToken, (req, res) => {

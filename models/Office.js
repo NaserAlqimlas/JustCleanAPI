@@ -1,14 +1,16 @@
 const Sequelize = require("sequelize");
 const db = require("../config/database");
+const Tower = require("./Tower");
 
 const Office = db.define(
-  "tower",
+  "office",
   {
     tower_id: { type: Sequelize.INTEGER },
     name: { type: Sequelize.STRING }
   },
   {
-    timestamps: false
+    timestamps: false,
+    underscored: true
   }
 );
 

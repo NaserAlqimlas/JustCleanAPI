@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../config/database");
+const Office = require("./Office");
 
 const Tower = db.define(
   "tower",
@@ -21,5 +22,7 @@ const Tower = db.define(
     timestamps: false
   }
 );
+
+Tower.hasMany(Office);
 
 module.exports = Tower;
