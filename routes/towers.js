@@ -52,18 +52,36 @@ router.get("/get", (req, res) => {
         res.status(200).json(towers);
       })
       .catch((err) => res.status(404).json({ error: err }));
-  } else if (req.query.filterquery && req.query.filtercol) {
+  } else if (req.query.name || req.query.location || req.query.numberOfFloors || req.query.rating || req.query.longitude || req.query.latitude) {
     // filter/search by passing what to search by (col) and the search query
     const filterquery = req.query.filterquery;
     const filtercol = req.query.filtercol;
+    const filterquery2 = req.query.filterquery2;
+    const filtercol2 = req.query.filtercol2;
 
     Tower.findAll({
       limit: req.query.limit,
       offset: req.query.offset,
       where: {
-        [filtercol]: {
-          [Op.iLike]: "%" + filterquery + "%"
-        }
+        [Op.or]: [{
+          name: {[Op.iLike]: `${req.query.name || ""}`}
+        },
+        {
+          location: {[Op.iLike]: `${req.query.location || ""}`}
+        },
+        {
+          numberOfFloors: {[Op.iLike]: Number(`${req.query.numberOfFloors || 0}`)}
+        },
+        {
+          rating: {[Op.iLike]: parseFloat(`${req.query.rating || 0.0}`)}
+        },
+        {
+          longitude: {[Op.iLike]: parseFloat(`${req.query.longitude || 0.0}`)}
+        },
+        {
+          latitude: {[Op.iLike]: parseFloat(`${req.query.latitude || 0.0}`)}
+        },
+      ]
       }
     })
       .then((towers) => {
