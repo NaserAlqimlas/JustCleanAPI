@@ -13,6 +13,7 @@ const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 
+//following socket docs
 app.get("/", (req, res) => {
   res.send("<h1>Hello world</h1>");
 });
