@@ -18,3 +18,10 @@ to generate the jwt web token, run the `auth/login` API and copy and paste the w
 `Bearer <jwt-auth-token>`
 
 ## Notes and issues
+
+Due to time constraints I wasn't able to meet all the requirements. This section clarifies how I would have done things differently/improved what I have already done. This section isn't here to make excuses, it's simply to clarify why some of the requirements weren't met.
+
+- Add REDIS caching -- I wasn't able to complete this since I have no knowledge on the topic, and whilst I tried to implement it I couldn't due to the lack of time.
+- Naming conventions in database tables. In the towers table i opted for camel case where as in the offices table i opted for snake case, while i did intend to come back to this later and fix it i just didn't have the time.
+- Figure socket.io client connectivity issues. -- This one was a weird one because even if i followed the documentation to the tee the socket would refuse to connect. I even changed the code such that it is 100% identical to the docs and it didn't work. Coincidentally, when i made a completely new project and ran the code it somehow worked.
+- UnhandledPromiseRejectionWarning on update API. -- I didn't really have time to look at this one, once i got the API working i decided to quickly move on to sockets as I had only one day left at that point.
